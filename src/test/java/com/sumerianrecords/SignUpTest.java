@@ -12,18 +12,18 @@ public class SignUpTest extends MainTest {
         try {
             driver.get("https://sumerianrecords.com/");
 
-            // Находим кнопку входа и переходим на страницу входа
+            // Finding the login button and go to the login page
             WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"SiteHeader\"]/div[1]/div[1]/div[3]/div/div/a[1]"));
             loginButton.click();
 
-            // Вводим логин и пароль
+            // Entering login and password
             WebElement emailInput = driver.findElement(By.xpath("//*[@id=\"CustomerEmail\"]"));
             emailInput.sendKeys(email);
 
             WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"CustomerPassword\"]"));
             passwordInput.sendKeys(password);
 
-            // Нажимаем кнопку входа
+            // Pressing the enter button
             WebElement signInButton = driver.findElement(By.xpath("//*[@id=\"customer_login\"]/p[1]/button"));
             signInButton.click();
         } catch (Exception e) {

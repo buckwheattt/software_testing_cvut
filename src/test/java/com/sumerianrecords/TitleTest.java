@@ -14,13 +14,13 @@ public class TitleTest extends MainTest {
         try {
             driver.get("https://sumerianrecords.com/");
 
-            // Получаем заголовок страницы
+            // Getting the page title
             String actualTitle = driver.getTitle();
 
-            // Ожидаемый заголовок
+            // Expected page title
             String expectedTitle = "Sumerian Records – Sumerian Merch";
 
-            // Проверяем соответствие заголовка
+            // Checking the title for compliance
             Assertions.assertEquals(expectedTitle, actualTitle, "another title is displayed");
         } catch (Exception e) {
             e.printStackTrace();

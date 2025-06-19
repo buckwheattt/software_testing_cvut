@@ -14,18 +14,18 @@ public class EditProfileTest extends MainTest {
         try {
             driver.get("https://sumerianrecords.com/");
 
-            // Находим кнопку входа и переходим на страницу входа
+            // Find the login button and go to the login page
             WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"SiteHeader\"]/div[1]/div[1]/div[3]/div/div/a[1]"));
             loginButton.click();
 
-            // Вводим логин и пароль
+            // Enter login and password
             WebElement emailInput = driver.findElement(By.xpath("//*[@id=\"CustomerEmail\"]"));
             emailInput.sendKeys("aaaaa@aaaa.com");
 
             WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"CustomerPassword\"]"));
             passwordInput.sendKeys("qwertyuiop");
 
-            // Нажимаем кнопку входа
+            // Pressing the button
             WebElement signInButton = driver.findElement(By.xpath("//*[@id=\"customer_login\"]/p[1]/button"));
             signInButton.click();
             Thread.sleep(5000);
@@ -41,10 +41,10 @@ public class EditProfileTest extends MainTest {
             WebDriverWait wait = new WebDriverWait(driver, 5);
             WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"Form0\"]/div[1]/div/div/div[2]/div/div[2]/div[1]/button")));
 
-            // Скролл к элементу
+            // Scroll to the element
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
-            // Небольшая пауза для завершения скролла
+            // Pause to finish scrolling
             Thread.sleep(5000);
 
             WebElement apartmentInput = driver.findElement(By.xpath("//*[@id=\"AddressFirstName_8427510562878\"]"));
@@ -53,10 +53,10 @@ public class EditProfileTest extends MainTest {
             WebDriverWait wait2 = new WebDriverWait(driver, 2);
             WebElement element2 = wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"Form0\"]/div[1]/div/div/div[2]/div/div[2]/div[1]/button")));
 
-            // Скролл к элементу
+            // Scroll to the element
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
-            // Небольшая пауза для завершения скролла
+            // Pause to finish scrolling
             Thread.sleep(2000);
 
             WebElement button = driver.findElement(By.xpath("//*[@id=\"address_form_8427510562878\"]/p[2]/button"));

@@ -13,14 +13,14 @@ public class OrderConfirmationTest extends MainTest {
     @Test
     public void testAddToCart() {
         try {
-            // Открываем страницу товара
+            // Open the product page
             driver.get("https://sumerianrecords.com/collections/palayeroyale/products/palaye-royale-little-bastards-coffee-mug");
 
-            // Нажимаем на кнопку "Добавить в корзину"
+            // Click on the "Add to cart" button
             WebElement addToCartButton = driver.findElement(By.xpath("//*[@id=\"AddToCartForm-template--14617934790718__main-4459923701822\"]/button"));
             addToCartButton.click();
 
-            // Подождем некоторое время, чтобы корзина обновилась
+            // Waiting a while for the basket to update.
             Thread.sleep(2000);
 
             WebElement close = driver.findElement(By.xpath("//*[@id=\"dpModal-container\"]/a"));
@@ -55,45 +55,33 @@ public class OrderConfirmationTest extends MainTest {
             WebDriverWait wait = new WebDriverWait(driver, 2);
             WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"Form0\"]/div[1]/div/div/div[2]/div/div[2]/div[1]/button")));
 
-            // Скролл к элементу
+            // Scroll
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
-            // Небольшая пауза для завершения скролла
+            // Pause
             Thread.sleep(2000);
 
             WebElement apartmentInput = driver.findElement(By.id("TextField4"));
             apartmentInput.sendKeys("Your Apartment");
 
-//            WebElement postalCodeInput = driver.findElement(By.id("TextField5"));
-//            postalCodeInput.sendKeys("10100");
-
-//            WebElement cityInput = driver.findElement(By.id("TextField6"));
-//            cityInput.sendKeys("Mainz");
-
-//            WebElement phoneInput = driver.findElement(By.id("TextField7"));
-//            phoneInput.sendKeys("+420777555");
-
-//            WebElement addressInput = driver.findElement(By.xpath("//*[@id=\"TextField3\"]"));
-//            addressInput.sendKeys("Deutschlandska 15");
-
-            // При необходимости добавьте код для отправки формы, нажатия кнопок и т.д.
+            // If necessary, add code for submitting forms, clicking buttons, etc.
             WebElement submitButton = driver.findElement(By.xpath("//*[@id=\"Form0\"]/div[1]/div/div/div[2]/div/div[2]/div[1]/button"));
             submitButton.click();
             Thread.sleep(3000);
 
             String expectedNewsText = "Enter a phone number"; // Замените на ожидаемый текст новости
 
-            // Находим элемент, содержащий текст новости
+            // Find the element containing the news text
             WebElement newsTextElement = driver.findElement(By.xpath("//*[@id=\"error-for-TextField7\"]")); // Замените 'news-content' на реальный класс элемента текста новости
 
-            // Получаем текст элемента
+            // Getting the text of the element
             String actualNewsText = newsTextElement.getText();
 
-            // Проверяем, что текст новости соответствует ожидаемому
+            // We check that the news text matches the expected one
             Assertions.assertEquals(expectedNewsText, actualNewsText, "Текст новости не соответствует ожидаемому");
 
 
-            // Можно добавить дополнительные проверки, например, сравнение названия и цены добавленного товара
+            // Can add additional checks, for example, comparing the name and price of the added product.
         } catch (Exception e) {
             e.printStackTrace();
         }

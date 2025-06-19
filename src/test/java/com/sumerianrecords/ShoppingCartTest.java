@@ -9,28 +9,28 @@ public class ShoppingCartTest extends MainTest {
     @Test
     public void testAddToCart() {
         try {
-            // Открываем страницу товара
+            // Open the product page
             driver.get("https://sumerianrecords.com/collections/palayeroyale/products/palaye-royale-little-bastards-coffee-mug");
 
-            // Нажимаем на кнопку "Добавить в корзину"
+            // Click on the "Add to cart" button
             WebElement addToCartButton = driver.findElement(By.xpath("//*[@id=\"AddToCartForm-template--14617934790718__main-4459923701822\"]/button"));
             addToCartButton.click();
 
-            // Подождем некоторое время, чтобы корзина обновилась
+            // Waiting a while for the basket to update.
             Thread.sleep(3000);
 
-            // Проверяем, что корзина содержит добавленный товар
+            // Checking that the cart contains the added product
             WebElement cartIcon = driver.findElement(By.xpath("//*[@id=\"SiteHeader\"]/div[1]/div[1]/div[3]/div/div/a[3]]"));
             cartIcon.click();
 
-            // Получаем количество товаров в корзине
+            // Getting the number of items in the basket
             WebElement cartItemCount = driver.findElement(By.xpath("//*[@id=\"SiteHeader\"]/div[1]/div[1]/div[3]/div/div/a[3]"));
             int itemCount = Integer.parseInt(cartItemCount.getText());
 
-            // Проверяем, что в корзине есть хотя бы один товар
+            // Checking that there is at least one item in the cart
             Assertions.assertTrue(itemCount > 0, "Товар не был добавлен в корзину");
 
-            // Можно добавить дополнительные проверки, например, сравнение названия и цены добавленного товара
+            // Possible to add additional checks, for example, comparing the name and price of the added product.
         } catch (Exception e) {
             e.printStackTrace();
         }
