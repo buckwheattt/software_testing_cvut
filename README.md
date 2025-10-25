@@ -32,7 +32,7 @@ src/
 ```
 ## 🔧 Technologies
 - Java 17+
-- Maven (or Gradle)
+- Maven
 - Selenium WebDriver
 - JUnit
 - CSV-based data
